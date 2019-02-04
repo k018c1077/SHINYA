@@ -2,9 +2,10 @@
 #define PIN_SW 4
 #define Delaytime 10
     int Brightness = 0;
-    int last =0;
-    int now =0;
+
     int state =0;
+    int in;
+    int prev;
 void setup()
 {
     pinMode(LED_PIN, OUTPUT);
@@ -15,12 +16,12 @@ void setup()
 
 }
 void loop(){
-    now = digitalRead(PIN_SW);
+    in = digitalRead(PIN_SW);
 
-
-    if(last != now){
-        last = now;
-        if(now == HIGH){
+    in = get_sw(prev);
+    if(prev != in){
+        prev = in;
+        if(in == HIGH){
             Serial.print(state);
             if(state == 0){
                 ledcWrite(0,255);
@@ -37,6 +38,20 @@ void loop(){
         }
     }
     delay(100);
+    
 
 
+}
+
+int get_sw(int sw_out) {
+  int in1, in2;
+
+  in1 = digitalRead(PIN_SW); // GPIO14から入力 GPIO14はPullUpしてある
+  delay(100);               // 要調整
+  in2 = digitalRead(PIN_SW);
+
+  if (in1 == in2 ) {
+    sw_out = in2;
+  }
+  return (sw_out);
 }

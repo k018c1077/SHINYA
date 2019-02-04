@@ -1,9 +1,11 @@
 #define LED_PIN 14
 #define PIN_SW 4
 #define Delaytime 10
-    int Brightness = 0;
-    int last =0;
-    int now =0;
+int Brightness = 0;
+
+int prev = 0;
+int in; // Œ»İ‚Ìsw‚Ìó‘Ô
+int led;
 void setup()
 {
     pinMode(LED_PIN, OUTPUT);
@@ -15,7 +17,7 @@ void setup()
 void loop()
 {
 
-    in = get_sw(prev); // swï¿½Ìï¿½Ô‚ï¿½Ç‚ï¿½inï¿½É‘ï¿½ï¿½
+    in = get_sw(prev); // sw‚Ìó‘Ô‚ğ“Ç‚İin‚É‘ã“ü
 
     if (prev != in)
     {}
@@ -49,8 +51,8 @@ int get_sw(int sw_out)
 {
     int in1, in2;
 
-    in1 = digitalRead(PIN_SW); // GPIO14ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ GPIO14ï¿½ï¿½PullUpï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
-    delay(100);                // ï¿½vï¿½ï¿½ï¿½ï¿½
+    in1 = digitalRead(PIN_SW); // GPIO14‚©‚ç“ü—Í GPIO14‚ÍPullUp‚µ‚Ä‚ ‚é
+    delay(100);                // —v’²®
     in2 = digitalRead(PIN_SW);
 
     if (in1 == in2)

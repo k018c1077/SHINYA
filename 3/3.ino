@@ -6,6 +6,9 @@
     int state =0;
     int in;
     int prev;
+    #define LED_OFF  0          // led 消灯 
+    #define LED_MID  30         // led 暗点灯 
+    #define LED_MAX  255        // led 最大点灯 
 void setup()
 {
     pinMode(LED_PIN, OUTPUT);
@@ -24,15 +27,15 @@ void loop(){
         if(in == HIGH){
             Serial.print(state);
             if(state == 0){
-                ledcWrite(0,255);
+                ledcWrite(0,LED_MAX);
                 state = 1;
             }
             else if(state == 1){
-                ledcWrite(0,255/2);
+                ledcWrite(0,LED_MID);
                 state = 2;
             }
             else if(state == 2){
-                ledcWrite(0,0);
+                ledcWrite(0,LED_OFF);
                 state = 0;
             }
         }

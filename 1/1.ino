@@ -11,32 +11,22 @@ void setup()
 
 void loop()
 {
-  LED(LED_R, LED_G);
+  LED(HIGH, LOW);
+  delay(1000);
+  LED(LOW, HIGH);
+  delay(1000);
+  LED(HIGH, HIGH);
+  delay(1000);
+  LED(LOW, LOW);
+  delay(1000);
+  LED(HIGH, HIGH);
+  delay(1000);
+  LED(LOW, LOW);
+  delay(1000);
 }
 
 void LED(int R_LED, int G_LED)
 {
-  digitalWrite(R_LED, HIGH);
-  digitalWrite(G_LED, LOW);
-  delay(DelayTime);
-
-  digitalWrite(R_LED, LOW);
-  digitalWrite(G_LED, HIGH);
-  delay(DelayTime);
-
-  digitalWrite(R_LED, HIGH);
-  digitalWrite(G_LED, HIGH);
-  delay(DelayTime);
-
-  digitalWrite(R_LED, LOW);
-  digitalWrite(G_LED, LOW);
-  delay(DelayTime);
-
-  digitalWrite(R_LED, HIGH);
-  digitalWrite(G_LED, HIGH);
-  delay(DelayTime);
-
-  digitalWrite(R_LED, LOW);
-  digitalWrite(G_LED, LOW);
-  delay(DelayTime);
+  digitalWrite(LED_R, R_LED);
+  digitalWrite(LED_G, G_LED);
 }
